@@ -1,3 +1,16 @@
 .detail-panel .p-panelmenu-header-link {
-  padding: 15px;
+  padding: 55px;
+}
+
+/* styles.css */
+.menu-parent-label {
+  @apply text-base font-semibold; 
+  padding: 0.25rem; 
+
+  /* Tailwind classes applied via @apply directive */
+}
+
+.menu-child-label {
+  @apply text-sm;
+  font-size:x-small; /* Tailwind classes applied via @apply directive */
 }
