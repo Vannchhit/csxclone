@@ -5,6 +5,7 @@ import LngLink from "@src/components/LngLink";
 import { AnimatePresence, motion } from "framer-motion";
 import "./style.css";
 
+
 export default function Header() {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -19,8 +20,8 @@ export default function Header() {
         { label: "IT Infrastructure Service", href: "#" },
         { label: "Financial Information Service", href: "#" },
         { label: "Blockchain Service", href: "#" },
-        { label: "New Business", href: "#" }
-      ]
+        { label: "New Business", href: "#" },
+      ],
     },
     {
       label: "Media Room",
@@ -29,8 +30,8 @@ export default function Header() {
         { label: "CI Introduction", href: "#" },
         { label: "Brochure", href: "#" },
         { label: "PR Movie Clip", href: "#" },
-        { label: "At a Glance", href: "#" }
-      ]
+        { label: "At a Glance", href: "#" },
+      ],
     },
     {
       label: "About Us",
@@ -38,17 +39,17 @@ export default function Header() {
       subItems: [
         { label: "Company Information", href: "#" },
         { label: "Organization Chart", href: "#" },
-        { label: "Sitemap", href: "#" }
-      ]
+        { label: "Sitemap", href: "#" },
+      ],
     },
     {
       label: "Contact",
       href: "#",
       subItems: [
         { label: "Customer Center", href: "#" },
-        { label: "Location & Contact", href: "#" }
-      ]
-    }
+        { label: "Location & Contact", href: "#" },
+      ],
+    },
   ];
 
   const start = (
@@ -56,7 +57,12 @@ export default function Header() {
       <img
         alt="logo"
         className="mr-2"
-        style={{ width: '210px', height: '55px', fontSize: '14px', padding: '0.5rem 1rem' }}
+        style={{
+          width: "210px",
+          height: "55px",
+          fontSize: "14px",
+          padding: "0.5rem 1rem",
+        }}
         src={csxLogo}
       />
     </LngLink>
@@ -96,11 +102,9 @@ export default function Header() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 20 }}
-                      
                       transition={{ duration: 0.3, ease: "easeOut" }}
                       className="absolute transform -translate-x-1/2 top-12 bg-white text-black border-t border-gray-300"
-          >
-
+                    >
                       {item.subItems.map((subItem, subIndex) => (
                         <li key={subIndex}>
                           <a

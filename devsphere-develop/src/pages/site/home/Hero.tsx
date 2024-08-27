@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion"; // Import motion from framer-motion
 import heroPic from "@src/assets/logos/hero.jpg"; // Adjust the path as necessary
 import p1 from "@src/assets/pics/p1.jpg";
 import p2 from "@src/assets/pics/p2.jpg";
@@ -7,6 +8,7 @@ import p4 from "@src/assets/pics/p4.jpg";
 import p5 from "@src/assets/pics/p5.jpg";
 import p6 from "@src/assets/pics/p6.jpg";
 import { useTranslation } from "react-i18next";
+import { fadeIn } from "@src/layouts/site/variants"; // Ensure fadeIn is correctly defined
 
 const ContentToggle = () => {
   const [showMore, setShowMore] = useState(false);
@@ -26,7 +28,12 @@ const ContentToggle = () => {
           className="w-full h-full object-cover absolute"
           src={heroPic}
         />
-        <div className="bg-[url('../@src/assets/logos/hero.jpg')] absolute inset-0 flex flex-col justify-center items-start text-start p-4">
+        <motion.div 
+          variants={fadeIn("right", 0.5)} // Ensure fadeIn is correctly defined
+          initial="hidden"
+          animate="show" // Changed from whileInView to animate for initial animation
+          viewport={{ once: false, amount: 0.7 }}
+          className="bg-[url('../@src/assets/logos/hero.jpg')] absolute inset-0 flex flex-col justify-center items-start text-start p-4">
           <h2 className="text-4xl font-bold text-white mb-4 pr-3">
             {t("Data Platform Company, Koscom")}
           </h2>
@@ -40,13 +47,18 @@ const ContentToggle = () => {
             <br />
             {t(" in light of the Fourth Industrial Revolution.")}
           </p>
-        </div>
+        </motion.div>
       </div>
       <div className="bg-gray-100 text-center py-20">
         <h2 className="text-4xl font-semibold">Business</h2>
       </div>
       {/* Content Toggle Section */}
-      <div className="flex flex-grow space-x-4 pl-4 pr-4 pt-8">
+      <motion.div 
+      variants={fadeIn("up", 1)} // Ensure fadeIn is correctly defined
+      initial="hidden"
+      animate="show" // Changed from whileInView to animate for initial animation
+      viewport={{ once: false, amount: 0.7 }}
+      className="flex flex-grow space-x-4 pl-4 pr-4 pt-8">
         {!showMore ? (
           <>
             {/* Initial Content */}
@@ -154,11 +166,11 @@ const ContentToggle = () => {
             </div>
           </>
         )}
-      </div>
+      </motion.div>
       <div className="text-center py-4">
         <span
           onClick={toggleView}
-          className="cursor-default text-blue-500 font-semibold flex items-center justify-end pr-10"
+          className="cursor-pointer text-blue-500 font-semibold flex items-center justify-end pr-10" // Changed cursor from default to pointer
         >
           <span>{showMore ? "Continue" : "Back"}</span>
           <svg
