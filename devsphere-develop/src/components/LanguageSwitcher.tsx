@@ -11,8 +11,9 @@ export default function LanguageToggle() {
   return (
     <div className="card flex justify-content-center">
       <Button
-        size="small"
-        className="w-14 justify-center border-0"
+        size="large"
+        style={{ width: '80px', height: '50px', fontSize: '14px', padding: '0.5rem 1rem' }}
+        className=" justify-center border-0"
         text
         onClick={() => changeLanguage(i18n.language === "en" ? "kh" : "en")}
       >
