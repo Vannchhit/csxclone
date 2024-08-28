@@ -19,6 +19,17 @@ const ContentToggle = () => {
     setShowMore(!showMore);
   };
 
+  const hoverEffect = {
+    initial: {
+      scale: 1,
+      border: "0 2px 4px rgba(0, 0, 0, 0.2)"
+    },
+    hover: {
+      scale: 1.05, // Scale up slightly
+      border: "0 2px 4px rgba(0, 0, 0, 0.3)" // Enhance shadow on hover
+    }
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -28,12 +39,13 @@ const ContentToggle = () => {
           className="w-full h-full object-cover absolute"
           src={heroPic}
         />
-        <motion.div 
+        <motion.div
           variants={fadeIn("right", 0.5)} // Ensure fadeIn is correctly defined
           initial="hidden"
           animate="show" // Changed from whileInView to animate for initial animation
           viewport={{ once: false, amount: 0.7 }}
-          className="bg-[url('../@src/assets/logos/hero.jpg')] absolute inset-0 flex flex-col justify-center items-start text-start p-4">
+          className="bg-[url('../@src/assets/logos/hero.jpg')] absolute inset-0 flex flex-col justify-center items-start text-start p-4"
+        >
           <h2 className="text-4xl font-bold text-white mb-4 pr-3">
             {t("Data Platform Company, Koscom")}
           </h2>
@@ -49,24 +61,34 @@ const ContentToggle = () => {
           </p>
         </motion.div>
       </div>
-      <div className="bg-gray-100 text-center py-20">
+      <motion.div
+        variants={fadeIn("up", 1)}
+        initial="hidden"
+        whileInView="show" // Use whileInView to trigger animation when in view
+        viewport={{ once: true, amount: 0.7 }} //
+        className="bg-gray-100 text-center py-20"
+      >
         <h2 className="text-4xl font-semibold">Business</h2>
-      </div>
+      </motion.div>
       {/* Content Toggle Section */}
-      <motion.div 
-      variants={fadeIn("up", 1)} // Ensure fadeIn is correctly defined
-      initial="hidden"
-      animate="show" // Changed from whileInView to animate for initial animation
-      viewport={{ once: false, amount: 0.7 }}
-      className="flex flex-grow space-x-4 pl-4 pr-4 pt-8">
+      <motion.div
+        variants={fadeIn("left", 1)} // Ensure fadeIn is correctly defined
+        initial="hidden"
+        animate="show" // Changed from whileInView to animate for initial animation
+        viewport={{ once: false, amount: 0.7 }}
+        className="flex flex-grow space-x-4 pl-4 pr-4 pt-8"
+      >
         {!showMore ? (
           <>
             {/* Initial Content */}
             <div className="w-1/3">
-              <img
+              <motion.img
                 alt="picture1"
                 className="w-full h-80 object-cover"
                 src={p1}
+                variants={hoverEffect}
+                initial="initial"
+                whileHover="hover"
               />
               <h3 className="text-xl font-semibold py-3">
                 Capital Market IT Service
@@ -78,10 +100,13 @@ const ContentToggle = () => {
               </p>
             </div>
             <div className="w-1/3">
-              <img
+              <motion.img
                 alt="picture2"
                 className="w-full h-80 object-cover"
                 src={p2}
+                variants={hoverEffect}
+                initial="initial"
+                whileHover="hover"
               />
               <h3 className="text-xl font-semibold py-3">
                 Financial Investment Company IT Service
@@ -93,10 +118,13 @@ const ContentToggle = () => {
               </p>
             </div>
             <div className="w-1/3">
-              <img
+              <motion.img
                 alt="picture3"
                 className="w-full h-80 object-cover"
                 src={p3}
+                variants={hoverEffect}
+                initial="initial"
+                whileHover="hover"
               />
               <h2 className="text-xl font-semibold py-3">
                 IT Infrastructure Service
@@ -115,10 +143,13 @@ const ContentToggle = () => {
                 showMore ? "translate-x-0" : "translate-x-full"
               }`}
             >
-              <img
+              <motion.img
                 alt="picture4"
                 className="w-full h-80 object-cover"
                 src={p4}
+                variants={hoverEffect}
+                initial="initial"
+                whileHover="hover"
               />
               <h3 className="text-xl font-semibold py-3">
                 Additional Service 1
@@ -133,10 +164,13 @@ const ContentToggle = () => {
                 showMore ? "translate-x-0" : "translate-x-full"
               }`}
             >
-              <img
+              <motion.img
                 alt="picture5"
                 className="w-full h-80 object-cover"
                 src={p5}
+                variants={hoverEffect}
+                initial="initial"
+                whileHover="hover"
               />
               <h3 className="text-xl font-semibold py-3">
                 Additional Service 2
@@ -151,10 +185,13 @@ const ContentToggle = () => {
                 showMore ? "translate-x-0" : "translate-x-full"
               }`}
             >
-              <img
+              <motion.img
                 alt="picture6"
                 className="w-full h-80 object-cover"
                 src={p6}
+                variants={hoverEffect}
+                initial="initial"
+                whileHover="hover"
               />
               <h2 className="text-xl font-semibold py-3">
                 Additional Service 3
@@ -172,7 +209,7 @@ const ContentToggle = () => {
           onClick={toggleView}
           className="cursor-pointer text-blue-500 font-semibold flex items-center justify-end pr-10" // Changed cursor from default to pointer
         >
-          <span>{showMore ? "Continue" : "Back"}</span>
+          <span>{showMore ? "Back" : "Continue"}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className={`ml-2 w-4 h-4 transform transition-transform duration-300 ${
